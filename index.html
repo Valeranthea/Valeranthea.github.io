@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+    <meta name="googlebot" content="noindex, nofollow" />
+    <title>懿学阁·YI Hub · 高效学习平台</title>
+    <style>[id^=sb__open-sandbox]{visibility:hidden!important;opacity:0!important;pointer-events:none!important;display:none!important}a[href*=netlify\.com],iframe[src*=netlify],[id*=netlify-],[class*=netlify-]{visibility:hidden!important;display:none!important}</style>
+    <script>
+      // 隐藏第三方沙盒平台注入的横幅与右下角「Open Sandbox」悬浮入口，
+      // 源码入口只在「创建人后台 → 快捷入口」里提供，普通用户看不到。
+      (function () {
+        try { localStorage.HIDE_PHISHING_BANNER = 'true'; } catch (e) {}
+        function removePlatformBadges() {
+          try {
+            var sandboxNodes = document.querySelectorAll('[id^="sb__open-sandbox"]');
+            for (var i = 0; i < sandboxNodes.length; i++) {
+              if (sandboxNodes[i].parentNode) sandboxNodes[i].parentNode.removeChild(sandboxNodes[i]);
+            }
+            var netlifyLinks = document.querySelectorAll('a[href*="netlify.com"]');
+            for (var j = 0; j < netlifyLinks.length; j++) {
+              if (netlifyLinks[j].parentNode) netlifyLinks[j].parentNode.removeChild(netlifyLinks[j]);
+            }
+          } catch (e) {}
+        }
+        // 兜底:按文字内容清理 Netlify 水印和「Build your own site」推广浮层
+        function removeNetlifyPromo() {
+          try {
+            var tops = document.querySelectorAll('body > *');
+            for (var i = 0; i < tops.length; i++) {
+              var el = tops[i];
+              if (!el || el.id === 'root') continue;
+              var t = el.textContent || '';
+              if (/powered by netlify/i.test(t) || /build your own site with netlify/i.test(t)) el.remove();
+            }
+            var all = document.querySelectorAll('div, iframe, a, section');
+            for (var j = all.length - 1; j >= 0; j--) {
+              var n = all[j];
+              if (!n || !n.parentNode || (n.closest && n.closest('#root'))) continue;
+              if (n.tagName === 'IFRAME' && /netlify/i.test(n.getAttribute('src') || '')) { n.remove(); continue; }
+              var txt = n.textContent || '';
+              if (txt.length > 600) continue;
+              if (!/powered by netlify/i.test(txt) && !/build your own site with netlify/i.test(txt)) continue;
+              var pos = getComputedStyle(n).position;
+              if (pos === 'fixed' || pos === 'absolute') n.remove();
+            }
+          } catch (e) {}
+        }
+        // 清除 body 上不属于应用(#root)的悬浮容器(Netlify 水印/推广都在这类容器里)
+        function removeBodyOverlays() {
+          try {
+            var kids = document.querySelectorAll('body > *');
+            for (var m = kids.length - 1; m >= 0; m--) {
+              var el = kids[m];
+              if (!el || el.id === 'root') continue;
+              var tag = el.tagName;
+              if (tag === 'SCRIPT' || tag === 'STYLE' || tag === 'NOSCRIPT' || tag === 'LINK') continue;
+              if (/netlify/i.test(String(el.id) + ' ' + String(el.className))) { el.remove(); continue; }
+              var pos = getComputedStyle(el).position;
+              var rect = el.getBoundingClientRect();
+              var small = rect.width > 0 && rect.width < 700 && rect.height > 0 && rect.height < 700;
+              if ((pos === 'fixed' || pos === 'absolute') && small) el.remove();
+            }
+          } catch (e) {}
+        }
+        removePlatformBadges();
+        removeNetlifyPromo();
+        removeBodyOverlays();
+        document.addEventListener('DOMContentLoaded', function () { removePlatformBadges(); removeNetlifyPromo(); removeBodyOverlays(); });
+        window.addEventListener('load', function () { removePlatformBadges(); removeNetlifyPromo(); removeBodyOverlays(); });
+        setTimeout(function () { removeNetlifyPromo(); removeBodyOverlays(); }, 1500);
+        try {
+          new MutationObserver(removePlatformBadges).observe(document.documentElement, { childList: true, subtree: true });
+        } catch (e) {}
+        setInterval(function () { removePlatformBadges(); removeNetlifyPromo(); removeBodyOverlays(); }, 1000);
+      })();
+    </script>
+    <script type="module" crossorigin src="./assets/index-BhdcqeHc.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-DdjQuOBe.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
